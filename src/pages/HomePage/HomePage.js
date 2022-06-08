@@ -10,6 +10,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 import './HomePage.css'
+import GoogleMapping from '../../components/GoogleMap/GoogleMapping';
 
 const HomePage = () => {
 
@@ -57,9 +58,9 @@ const HomePage = () => {
 
   return (
     <>
-      <TopNavBar ref={advanceRef} onClick={closeAdvance}/>
-      <Navbar ref={advanceRef} onClick={closeAdvance}/>
-      <div  className='home-container'ref={advanceRef} onClick={closeAdvance} >
+      <TopNavBar />
+      <Navbar />
+      <div  className='home-container' >
         <div className="home-page-image">
           <img src={homeImage} alt='building' height={355} width={1804} />
         </div>
@@ -67,6 +68,7 @@ const HomePage = () => {
           <h1>WELCOME TO AUCKLAND PROPERTY MANAGEMENT </h1>
           <p>Auckland’s home of reduced risk residential, commercial and body corporate property management</p>
         </div>
+        <div className="divider"></div>
         <div className="future-rent-container">
           <h1>Let’s find your future rent together : </h1>
         </div>
@@ -219,6 +221,22 @@ const HomePage = () => {
             </button>
             <button className='search-property-button'>Search Properties</button>
           </div>
+        </div>
+      </div>
+      <div className="play-container">
+        <div className="play-header-container">
+          <h1>Or:</h1>
+          <h1 className='play-header'>Play around with our interactive map</h1>
+        </div>
+        <div className="google-map-wrapper">
+              <GoogleMapping/>
+        </div>
+        <div className="latest-property-header-container">
+          <p className='property-header'>Latest Properties Available</p>
+        </div>
+        <div className="latest-property-products-container">
+              <div className="latest-property-products">
+              </div>
         </div>
       </div>
     </>

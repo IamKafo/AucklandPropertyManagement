@@ -9,6 +9,8 @@
 .homepage-header{
     /* border: 2px solid purple; */
     line-height: 20px;
+    margin-top: 63px;
+    margin-bottom: 60px;
 }
 .homepage-header h1 , p {
     color: #c21d3c;
@@ -20,11 +22,21 @@
     margin-top: 0;
 }
 
+.divider{
+    border: 2px solid #c21d3c;
+    height: 47px;
+    min-width: 1804px;
+    max-width: 1804px;
+    background-color: #c21d3c;
+}
+
 .future-rent-container{
     color: #c21d3c;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 64px;
 }
 
 .future-rent-container h1 {
@@ -214,4 +226,54 @@
     border-radius: 12px;
     margin-right: 130px;
 
+}
+.google-map-wrapper{
+    border: 2px solid black;
+    min-width: 1034px;
+    max-width: 1034px;
+    height: 538px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.play-header-container {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 2px;
+    margin-top: 47px;
+    margin-bottom: 82px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.play-header {
+    color: #c21d3c;
+}
+
+.play-container {
+    border: 2px red solid;
+    max-width: 1804px ;
+    min-width: 1804px ;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.latest-property-header-container {
+    display: flex;
+    justify-content: center;
+   align-items: center;
+   margin-top: 97px;
+
+}
+
+.property-header {
+    border: 2px solid;
+    color: #fff;
+    background-color: #c21d3c;
+    padding-left: 127px;
+    padding-right: 127px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
