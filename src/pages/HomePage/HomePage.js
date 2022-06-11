@@ -1,13 +1,18 @@
-import React, {useRef, useState , } from 'react'
+import React, { useState , useEffect  } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import TopNavBar from '../../components/TopNavbar/TopNavBar'
 import homeImage from '../../images/Rectangle 133.png'
+
 
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { Icon } from '@iconify/react';
+import warning from '../../images/emojione_warning.png'
+
+import axios from 'axios'
 
 import './HomePage.css'
 import GoogleMapping from '../../components/GoogleMap/GoogleMapping';
@@ -23,15 +28,23 @@ const HomePage = () => {
   
   const [advance, setAdvance] = useState(false)
 
-  const advanceRef = useRef();
+  const [data, setData] = useState([])
 
-  const closeAdvance = () => {
-    if (advanceRef.current === advance(true)) {
-      setAdvance(false)
+  useEffect(() => {
+        houseData()
+  }, []);
+
+  const houseData = () => {
+    axios.get("http://localhost:3001/all")
+    .then((response) => {
+      console.log(response)
+      setData(response.data)
+    }).catch(err => {
+      console.log(err)
+    }) 
     }
-  }
- 
 
+ 
   const handleChange = (event) => {
     setType(event.target.value);
   };
@@ -69,6 +82,17 @@ const HomePage = () => {
           <p>Auckland’s home of reduced risk residential, commercial and body corporate property management</p>
         </div>
         <div className="divider"></div>
+        <div className="covid-container">
+          <div className='covid-warning'><img src={warning} alt="warning" /></div>
+          <div className="covid-message">
+            <p>Covid-19 Lockdown: All our viewings are temporarily paused,but we are still accepting Rent Application and will resume in accordance with 
+                Ministry of Health guidelines.Thanks for your understanding. </p>
+          </div>
+          <div className='covid-warning'><img src={warning} alt="warning" /></div>
+        </div>
+        <div className="more-details-border">
+          <p>Click here for more Details</p>
+        </div>
         <div className="future-rent-container">
           <h1>Let’s find your future rent together : </h1>
         </div>
@@ -234,9 +258,36 @@ const HomePage = () => {
         <div className="latest-property-header-container">
           <p className='property-header'>Latest Properties Available</p>
         </div>
+
+
+        
         <div className="latest-property-products-container">
-              <div className="latest-property-products">
+          {
+            data.map((val)=>  { 
+              return(
+
+                 <div className="latest-property-products">
+                <div className="image-sample">
+                  <img src={val.photo} alt="house" />
+                </div>
+                <div className="house-information-container">
+                  <div className="information-product">{val.snippet}</div>
+                  <div className="img-wrapper">
+                    <Icon icon="ion:bed-sharp" color="black" />
+                    <p> {val.bed}</p>
+                    <Icon className='icon-image' icon="jam:bathtub-f" color="black" width={18} height={19} />
+                    <p> {val.bath}</p>
+                  </div>
+                  <div className="view-button-container">
+                    <div className="view-button1">{val.cost} Weekly</div>
+                    <div className="view-button2">View details</div>
+                  </div>
+                </div>
               </div>
+  
+              )
+            })
+          }
         </div>
       </div>
     </>
