@@ -263,10 +263,10 @@ const HomePage = () => {
         
         <div className="latest-property-products-container">
           {
-            data.map((val)=>  { 
+            data.map((val, key)=>  { 
               return(
 
-                 <div className="latest-property-products">
+                 <div key={key} className="latest-property-products">
                 <div className="image-sample">
                   <img src={val.photo} alt="house" />
                 </div>
